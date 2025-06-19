@@ -1,0 +1,59 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+/src/generated/prisma
+
+# Deployment packages
+BirdingWithCob-*.zip
+BirdingWithCob-*-Deploy/
+temp_*/
+
+# Database files
+*.db
+*.sqlite
+dev.db
+
+# Keep uploads folder but ignore large files
+public/uploads/*
+!public/uploads/birdingbg1.jpg
+!public/uploads/birdingwithcoblogo.png
+!public/uploads/.gitkeep

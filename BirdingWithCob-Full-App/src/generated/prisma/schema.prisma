@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// User model for authentication and user data
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      String   @default("user")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  spottings UserSpotting[]
+
+  @@map("users")
+}
+
+// Bird species model with iNaturalist data
+model Bird {
+  id                 Int      @id
+  name               String
+  scientificName     String
+  commonName         String?
+  type               String?
+  rarity             String?
+  habitat            String?
+  description        String?
+  imageUrl           String?
+  photoAttribution   String?
+  conservationStatus String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  // Relations
+  spottings UserSpotting[]
+
+  @@map("birds")
+}
+
+// User bird spotting records with coordinates
+model UserSpotting {
+  id         String   @id @default(cuid())
+  userId     String
+  birdId     Int
+  latitude   Float
+  longitude  Float
+  location   String? // Human-readable location name
+  notes      String?
+  userPhoto  String? // User-uploaded photo URL
+  confidence String? // How confident the user is about the identification
+  spottedAt  DateTime @default(now())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bird Bird @relation(fields: [birdId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([birdId])
+  @@index([latitude, longitude])
+  @@map("user_spottings")
+}

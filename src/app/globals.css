@@ -1,0 +1,1396 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Enhanced Modern Color Palette */
+  --pokedex-red: #dc2626;
+  --pokedex-red-dark: #991b1b;
+  --pokedex-blue: #2563eb;
+  --pokedex-blue-dark: #1d4ed8;
+  --pokedex-green: #16a34a;
+  --pokedex-green-light: #22c55e;
+  --pokedex-yellow: #eab308;
+  --pokedex-screen-bg: #f0f4c3;
+  --pokedex-screen-border: #8bc34a;
+  --pokedex-text: #1f2937;
+  --pokedex-text-light: #6b7280;
+
+  /* Modern Glassmorphism Variables */
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --glass-backdrop: blur(8px);
+
+  /* Modern Pokédex Color Scheme */
+  --pokedex-red-primary: #dc2626;
+  --pokedex-red-dark: #991b1b;
+  --pokedex-red-light: #f87171;
+  --pokedex-blue-primary: #1d4ed8;
+  --pokedex-blue-dark: #1e3a8a;
+  --pokedex-blue-light: #60a5fa;
+  --pokedex-gray: #374151;
+  --pokedex-gray-light: #6b7280;
+  --pokedex-gray-dark: #1f2937;
+  --background: linear-gradient(135deg, #1e3a8a 0%, #1f2937 100%);
+  --foreground: #1f2937;
+
+  /* Retro-Modern Fusion Colors */
+  --retro-cyan: #00d4ff;
+  --retro-pink: #ff006e;
+  --retro-purple: #8338ec;
+  --retro-green: #06ffa5;
+  --retro-orange: #ff9500;
+  --retro-yellow: #ffff00;
+
+  /* Modern Color Palette */
+  --primary-gradient: linear-gradient(135deg, var(--retro-cyan) 0%, var(--retro-purple) 100%);
+  --secondary-gradient: linear-gradient(135deg, var(--retro-pink) 0%, var(--retro-orange) 100%);
+  --accent-gradient: linear-gradient(135deg, var(--retro-green) 0%, var(--retro-cyan) 100%);
+
+  /* Semantic Colors */
+  --success-color: var(--retro-green);
+  --warning-color: var(--retro-orange);
+  --error-color: var(--retro-pink);
+  --info-color: var(--retro-cyan);
+
+  /* Text Colors */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-accent: #06b6d4;
+  --text-light: rgba(255, 255, 255, 0.9);
+  --text-muted: rgba(255, 255, 255, 0.7);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'Press Start 2P', monospace;
+}
+
+body {
+  background: var(--background);
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.pixel-font {
+  font-family: 'Press Start 2P', monospace;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.pixel-font:hover {
+  transform: translateY(-1px);
+  /* Removed text-shadow to prevent shadows on black text */
+}
+
+/* Enhanced Typography */
+.pixel-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  background: linear-gradient(45deg, var(--retro-cyan), var(--retro-pink), var(--retro-purple));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 3s ease infinite;
+  text-shadow: none;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.modern-pixel-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+.retro-modern-heading {
+  font-family: 'Press Start 2P', monospace;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.retro-modern-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--retro-cyan), var(--retro-pink));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.retro-modern-heading:hover::after {
+  transform: scaleX(1);
+}
+
+.pokedex-screen {
+  background: var(--pokedex-screen-bg);
+  border: 4px solid var(--pokedex-screen-border);
+  border-radius: 8px;
+  box-shadow:
+    inset 2px 2px 4px rgba(0,0,0,0.1),
+    inset -2px -2px 4px rgba(255,255,255,0.3);
+}
+
+.pokedex-button {
+  background: linear-gradient(145deg, #ef4444, #dc2626);
+  border: 2px solid #991b1b;
+  border-radius: 50%;
+  box-shadow:
+    2px 2px 4px rgba(0,0,0,0.3),
+    inset 1px 1px 2px rgba(255,255,255,0.2);
+  transition: all 0.1s ease;
+}
+
+.pokedex-button:hover {
+  transform: translateY(1px);
+  box-shadow:
+    1px 1px 2px rgba(0,0,0,0.3),
+    inset 1px 1px 2px rgba(255,255,255,0.2);
+}
+
+.pokedex-button:active {
+  transform: translateY(2px);
+  box-shadow:
+    0px 0px 1px rgba(0,0,0,0.3),
+    inset 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.type-badge {
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+.modern-badge {
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+.modern-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Enhanced Type Colors with Modern Gradients */
+.type-normal {
+  background: linear-gradient(135deg, #a8a878 0%, #c4c4a0 100%);
+  color: #000;
+  border: 1px solid rgba(168, 168, 120, 0.3);
+}
+.type-fire {
+  background: linear-gradient(135deg, #f08030 0%, #ff9500 100%);
+  color: #fff;
+  border: 1px solid rgba(240, 128, 48, 0.3);
+}
+.type-water {
+  background: linear-gradient(135deg, #6890f0 0%, #00d4ff 100%);
+  color: #fff;
+  border: 1px solid rgba(104, 144, 240, 0.3);
+}
+.type-electric {
+  background: linear-gradient(135deg, #f8d030 0%, #ffff00 100%);
+  color: #000;
+  border: 1px solid rgba(248, 208, 48, 0.3);
+}
+.type-grass {
+  background: linear-gradient(135deg, #78c850 0%, #06ffa5 100%);
+  color: #000;
+  border: 1px solid rgba(120, 200, 80, 0.3);
+}
+.type-ice {
+  background: linear-gradient(135deg, #98d8d8 0%, #00d4ff 100%);
+  color: #000;
+  border: 1px solid rgba(152, 216, 216, 0.3);
+}
+.type-fighting {
+  background: linear-gradient(135deg, #c03028 0%, #ff006e 100%);
+  color: #fff;
+  border: 1px solid rgba(192, 48, 40, 0.3);
+}
+.type-poison {
+  background: linear-gradient(135deg, #a040a0 0%, #8338ec 100%);
+  color: #fff;
+  border: 1px solid rgba(160, 64, 160, 0.3);
+}
+.type-ground {
+  background: linear-gradient(135deg, #e0c068 0%, #ff9500 100%);
+  color: #000;
+  border: 1px solid rgba(224, 192, 104, 0.3);
+}
+.type-flying {
+  background: linear-gradient(135deg, #a890f0 0%, #8338ec 100%);
+  color: #fff;
+  border: 1px solid rgba(168, 144, 240, 0.3);
+}
+.type-psychic {
+  background: linear-gradient(135deg, #f85888 0%, #ff006e 100%);
+  color: #fff;
+  border: 1px solid rgba(248, 88, 136, 0.3);
+}
+.type-bug {
+  background: linear-gradient(135deg, #a8b820 0%, #06ffa5 100%);
+  color: #000;
+  border: 1px solid rgba(168, 184, 32, 0.3);
+}
+.type-rock {
+  background: linear-gradient(135deg, #b8a038 0%, #ff9500 100%);
+  color: #000;
+  border: 1px solid rgba(184, 160, 56, 0.3);
+}
+.type-ghost {
+  background: linear-gradient(135deg, #705898 0%, #8338ec 100%);
+  color: #fff;
+  border: 1px solid rgba(112, 88, 152, 0.3);
+}
+.type-dragon {
+  background: linear-gradient(135deg, #7038f8 0%, #8338ec 100%);
+  color: #fff;
+  border: 1px solid rgba(112, 56, 248, 0.3);
+}
+.type-dark {
+  background: linear-gradient(135deg, #705848 0%, #2d1b69 100%);
+  color: #fff;
+  border: 1px solid rgba(112, 88, 72, 0.3);
+}
+.type-steel {
+  background: linear-gradient(135deg, #b8b8d0 0%, #00d4ff 100%);
+  color: #000;
+  border: 1px solid rgba(184, 184, 208, 0.3);
+}
+.type-fairy {
+  background: linear-gradient(135deg, #ee99ac 0%, #ff006e 100%);
+  color: #fff;
+  border: 1px solid rgba(238, 153, 172, 0.3);
+}
+
+/* Bird Type Specific Colors */
+.type-raptor {
+  background: linear-gradient(135deg, #8b4513 0%, #ff9500 100%);
+  color: #fff;
+  border: 1px solid rgba(139, 69, 19, 0.3);
+}
+.type-hummingbird {
+  background: linear-gradient(135deg, #ff69b4 0%, #00d4ff 100%);
+  color: #fff;
+  border: 1px solid rgba(255, 105, 180, 0.3);
+}
+.type-corvid {
+  background: linear-gradient(135deg, #2f2f2f 0%, #8338ec 100%);
+  color: #fff;
+  border: 1px solid rgba(47, 47, 47, 0.3);
+}
+.type-waterfowl {
+  background: linear-gradient(135deg, #4682b4 0%, #00d4ff 100%);
+  color: #fff;
+  border: 1px solid rgba(70, 130, 180, 0.3);
+}
+.type-songbird {
+  background: linear-gradient(135deg, #ffd700 0%, #06ffa5 100%);
+  color: #000;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+.type-shorebird {
+  background: linear-gradient(135deg, #deb887 0%, #8fbc8f 100%);
+  color: #000;
+  border: 1px solid rgba(222, 184, 135, 0.3);
+}
+.type-woodpecker {
+  background: linear-gradient(135deg, #a0522d 0%, #cd853f 100%);
+  color: #fff;
+  border: 1px solid rgba(160, 82, 45, 0.3);
+}
+.type-unknown {
+  background: linear-gradient(135deg, #666666 0%, #444444 100%);
+  color: #cccccc;
+  border: 1px solid rgba(102, 102, 102, 0.3);
+}
+
+.pixel-border {
+  border: 3px solid;
+  border-image:
+    linear-gradient(45deg,
+      #000 0%, #000 25%,
+      #666 25%, #666 50%,
+      #000 50%, #000 75%,
+      #666 75%, #666 100%
+    ) 3;
+}
+
+.retro-shadow {
+  /* Only apply shadow to light colored text, not black text */
+  text-shadow: 2px 2px 0px rgba(255,255,255,0.3);
+}
+
+.retro-glow {
+  text-shadow:
+    0 0 5px rgba(16, 185, 129, 0.5),
+    0 0 10px rgba(16, 185, 129, 0.3),
+    0 0 15px rgba(16, 185, 129, 0.2),
+    2px 2px 0px rgba(0,0,0,0.3);
+  animation: glow-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow-pulse {
+  from {
+    text-shadow:
+      0 0 5px rgba(16, 185, 129, 0.5),
+      0 0 10px rgba(16, 185, 129, 0.3),
+      0 0 15px rgba(16, 185, 129, 0.2),
+      2px 2px 0px rgba(0,0,0,0.3);
+  }
+  to {
+    text-shadow:
+      0 0 8px rgba(16, 185, 129, 0.8),
+      0 0 15px rgba(16, 185, 129, 0.5),
+      0 0 20px rgba(16, 185, 129, 0.3),
+      2px 2px 0px rgba(0,0,0,0.3);
+  }
+}
+
+/* Removed pixel-perfect class to improve image quality */
+
+/* Enhanced Pixel Aesthetics */
+.pixel-border-modern {
+  border: 3px solid;
+  border-image: linear-gradient(45deg,
+    var(--retro-cyan) 0%,
+    var(--retro-pink) 25%,
+    var(--retro-purple) 50%,
+    var(--retro-green) 75%,
+    var(--retro-cyan) 100%
+  ) 3;
+  animation: pixel-border-flow 3s linear infinite;
+}
+
+@keyframes pixel-border-flow {
+  0% { border-image-source: linear-gradient(45deg, var(--retro-cyan), var(--retro-pink), var(--retro-purple), var(--retro-green), var(--retro-cyan)); }
+  25% { border-image-source: linear-gradient(45deg, var(--retro-pink), var(--retro-purple), var(--retro-green), var(--retro-cyan), var(--retro-pink)); }
+  50% { border-image-source: linear-gradient(45deg, var(--retro-purple), var(--retro-green), var(--retro-cyan), var(--retro-pink), var(--retro-purple)); }
+  75% { border-image-source: linear-gradient(45deg, var(--retro-green), var(--retro-cyan), var(--retro-pink), var(--retro-purple), var(--retro-green)); }
+  100% { border-image-source: linear-gradient(45deg, var(--retro-cyan), var(--retro-pink), var(--retro-purple), var(--retro-green), var(--retro-cyan)); }
+}
+
+.pixel-scanlines {
+  position: relative;
+  overflow: hidden;
+}
+
+.pixel-scanlines::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 0, 0.03) 2px,
+    rgba(0, 255, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  animation: scanlines 0.1s linear infinite;
+}
+
+@keyframes scanlines {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+.pixel-glow {
+  box-shadow:
+    0 0 10px var(--retro-cyan),
+    0 0 20px var(--retro-cyan),
+    0 0 30px var(--retro-cyan),
+    inset 0 0 10px rgba(0, 212, 255, 0.1);
+  animation: pixel-glow-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes pixel-glow-pulse {
+  from {
+    box-shadow:
+      0 0 5px var(--retro-cyan),
+      0 0 10px var(--retro-cyan),
+      0 0 15px var(--retro-cyan),
+      inset 0 0 5px rgba(0, 212, 255, 0.1);
+  }
+  to {
+    box-shadow:
+      0 0 15px var(--retro-cyan),
+      0 0 25px var(--retro-cyan),
+      0 0 35px var(--retro-cyan),
+      inset 0 0 15px rgba(0, 212, 255, 0.2);
+  }
+}
+
+/* Modern Pokédex Design System */
+.pokedex-container {
+  background: var(--pokedex-red-primary);
+  border: 4px solid var(--pokedex-red-dark);
+  border-radius: 20px;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.3),
+    inset 0 2px 4px rgba(255,255,255,0.1),
+    inset 0 -2px 4px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.pokedex-container::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--pokedex-red-light) 0%, var(--pokedex-red-primary) 100%);
+  border-radius: 2px;
+}
+
+.pokedex-screen {
+  background: #f0f4c3;
+  border: 3px solid var(--pokedex-gray-dark);
+  border-radius: 12px;
+  box-shadow:
+    inset 2px 2px 8px rgba(0,0,0,0.2),
+    inset -2px -2px 8px rgba(255,255,255,0.3),
+    0 4px 16px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.pokedex-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%, rgba(0,0,0,0.05) 100%);
+  pointer-events: none;
+}
+
+.pokedex-panel {
+  background: var(--pokedex-blue-primary);
+  border: 2px solid var(--pokedex-blue-dark);
+  border-radius: 8px;
+  box-shadow:
+    0 4px 16px rgba(0,0,0,0.2),
+    inset 0 1px 2px rgba(255,255,255,0.1);
+  transition: all 0.2s ease;
+}
+
+.pokedex-panel:hover {
+  background: var(--pokedex-blue-light);
+  transform: translateY(-1px);
+  box-shadow:
+    0 6px 20px rgba(0,0,0,0.25),
+    inset 0 1px 2px rgba(255,255,255,0.2);
+}
+
+.pokedex-image-container {
+  background: #000;
+  border: 3px solid var(--pokedex-gray-dark);
+  border-radius: 8px;
+  box-shadow:
+    inset 2px 2px 8px rgba(0,0,0,0.5),
+    0 4px 16px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.pokedex-image-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(0,255,0,0.1) 0%, transparent 50%, rgba(0,255,0,0.05) 100%);
+  pointer-events: none;
+}
+
+.pokedex-text-area {
+  background: #e8f5e8;
+  border: 2px solid var(--pokedex-green);
+  border-radius: 6px;
+  box-shadow: inset 1px 1px 4px rgba(0,0,0,0.1);
+}
+
+/* Responsive Design Improvements */
+@media (max-width: 768px) {
+  .pokedex-container {
+    margin: 0 1rem;
+    padding: 1rem;
+  }
+
+  .pokedex-screen {
+    min-height: 400px;
+    padding: 1rem;
+  }
+
+  .pokedex-image-container {
+    height: 250px;
+  }
+
+  .pokedex-panel {
+    padding: 0.75rem;
+  }
+
+  .pixel-font {
+    font-size: 0.75rem;
+  }
+
+  .pokedex-button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .pokedex-control-button {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pokedex-container {
+    padding: 0.75rem;
+  }
+
+  .pokedex-screen {
+    min-height: 350px;
+    padding: 0.75rem;
+  }
+
+  .pokedex-image-container {
+    height: 200px;
+  }
+
+  .pokedex-bird-card {
+    padding: 0.5rem;
+  }
+
+  .pokedex-bird-card .h-12 {
+    height: 2rem;
+  }
+}
+
+/* Performance Optimizations */
+
+.hover-lift {
+  will-change: transform, box-shadow;
+}
+
+/* Accessibility Improvements */
+.pokedex-button:focus,
+.pokedex-control-button:focus,
+.pokedex-input:focus,
+.pokedex-bird-card:focus {
+  outline: 2px solid #fbbf24;
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .pokedex-container {
+    background: white;
+    border: 2px solid black;
+    box-shadow: none;
+  }
+
+  .pokedex-screen {
+    background: white;
+    border: 1px solid black;
+  }
+
+  .pokedex-panel {
+    background: #f3f4f6;
+    border: 1px solid black;
+  }
+}
+
+/* Pokédex Button Styles */
+.pokedex-button {
+  background: linear-gradient(135deg, var(--pokedex-red-light) 0%, var(--pokedex-red-primary) 100%);
+  border: 2px solid var(--pokedex-red-dark);
+  border-radius: 8px;
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.2),
+    inset 0 1px 2px rgba(255,255,255,0.2),
+    inset 0 -1px 2px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pokedex-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.pokedex-button:hover::before {
+  left: 100%;
+}
+
+.pokedex-button:hover {
+  background: linear-gradient(135deg, var(--pokedex-red-primary) 0%, var(--pokedex-red-dark) 100%);
+  transform: translateY(-1px);
+  box-shadow:
+    0 6px 12px rgba(0,0,0,0.25),
+    inset 0 1px 2px rgba(255,255,255,0.3);
+}
+
+.pokedex-button:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.2),
+    inset 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.pokedex-control-button {
+  background: linear-gradient(135deg, var(--pokedex-blue-light) 0%, var(--pokedex-blue-primary) 100%);
+  border: 2px solid var(--pokedex-blue-dark);
+  border-radius: 50%;
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.2),
+    inset 0 1px 2px rgba(255,255,255,0.2);
+  transition: all 0.2s ease;
+}
+
+.pokedex-control-button:hover {
+  background: linear-gradient(135deg, var(--pokedex-blue-primary) 0%, var(--pokedex-blue-dark) 100%);
+  transform: scale(1.05);
+  box-shadow:
+    0 6px 12px rgba(0,0,0,0.25),
+    inset 0 1px 2px rgba(255,255,255,0.3);
+}
+
+.pokedex-input {
+  background: #f8fafc;
+  border: 2px solid var(--pokedex-gray);
+  border-radius: 6px;
+  box-shadow: inset 1px 1px 4px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+.pokedex-input:focus {
+  background: #ffffff;
+  border-color: var(--pokedex-blue-primary);
+  box-shadow:
+    0 0 0 2px rgba(29, 78, 216, 0.2),
+    inset 1px 1px 4px rgba(0,0,0,0.1);
+}
+
+.pokedex-bird-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border: 2px solid var(--pokedex-gray);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+.pokedex-bird-card:hover {
+  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+  border-color: var(--pokedex-blue-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.pokedex-bird-card.selected {
+  background: linear-gradient(135deg, var(--pokedex-blue-light) 0%, var(--pokedex-blue-primary) 100%);
+  border-color: var(--pokedex-blue-dark);
+  color: white;
+}
+
+/* Modern Hover Effects and Micro-animations */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.hover-glow {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.hover-glow:hover {
+  filter: brightness(1.1);
+  box-shadow:
+    0 0 20px rgba(0, 212, 255, 0.3),
+    0 8px 32px rgba(0,0,0,0.1);
+}
+
+.pulse-on-hover {
+  transition: all 0.2s ease;
+}
+
+.pulse-on-hover:hover {
+  animation: gentle-pulse 0.6s ease-in-out;
+}
+
+@keyframes gentle-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.shimmer-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.shimmer-effect:hover::before {
+  left: 100%;
+}
+
+.floating-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.rotate-on-hover {
+  transition: transform 0.3s ease;
+}
+
+.rotate-on-hover:hover {
+  transform: rotate(5deg) scale(1.05);
+}
+
+/* Removed pixel-perfect media query for better image quality */
+
+/* Modern focus states */
+.modern-focus:focus {
+  outline: none;
+  box-shadow:
+    0 0 0 2px rgba(16, 185, 129, 0.5),
+    0 0 20px rgba(16, 185, 129, 0.2);
+  transform: scale(1.02);
+}
+
+/* Visual Hierarchy Improvements */
+.hierarchy-primary {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.hierarchy-secondary {
+  font-size: clamp(1.25rem, 3vw, 1.875rem);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+
+.hierarchy-tertiary {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.hierarchy-body {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.hierarchy-caption {
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  font-weight: 400;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+/* Modern Spacing System */
+.space-xs { margin: 0.25rem; }
+.space-sm { margin: 0.5rem; }
+.space-md { margin: 1rem; }
+.space-lg { margin: 1.5rem; }
+.space-xl { margin: 2rem; }
+.space-2xl { margin: 3rem; }
+
+.gap-xs { gap: 0.25rem; }
+.gap-sm { gap: 0.5rem; }
+.gap-md { gap: 1rem; }
+.gap-lg { gap: 1.5rem; }
+.gap-xl { gap: 2rem; }
+
+/* Enhanced Card Hierarchy */
+.card-primary {
+  background: var(--primary-gradient);
+  color: var(--text-light);
+  box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+}
+
+.card-secondary {
+  background: var(--secondary-gradient);
+  color: var(--text-light);
+  box-shadow: 0 10px 40px rgba(255, 0, 110, 0.2);
+}
+
+.card-accent {
+  background: var(--accent-gradient);
+  color: var(--text-primary);
+  box-shadow: 0 10px 40px rgba(6, 255, 165, 0.2);
+}
+
+/* Status Indicators */
+.status-success {
+  background: linear-gradient(135deg, var(--success-color) 0%, #10b981 100%);
+  color: var(--text-primary);
+}
+
+.status-warning {
+  background: linear-gradient(135deg, var(--warning-color) 0%, #f59e0b 100%);
+  color: var(--text-primary);
+}
+
+.status-error {
+  background: linear-gradient(135deg, var(--error-color) 0%, #ef4444 100%);
+  color: var(--text-light);
+}
+
+.status-info {
+  background: linear-gradient(135deg, var(--info-color) 0%, #3b82f6 100%);
+  color: var(--text-light);
+}
+
+/* Advanced Micro-interactions and Animations */
+.stagger-animation {
+  animation: stagger-in 0.6s ease-out forwards;
+}
+
+.stagger-animation:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animation:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes stagger-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.bounce-in {
+  animation: bounce-in 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-10deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) rotate(2deg);
+  }
+  70% {
+    transform: scale(0.9) rotate(-1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.slide-in-left {
+  animation: slide-in-left 0.6s ease-out;
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-right {
+  animation: slide-in-right 0.6s ease-out;
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-up {
+  animation: fade-in-up 0.8s ease-out;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Interactive Button Animations */
+.button-press {
+  transition: all 0.1s ease;
+}
+
+.button-press:active {
+  transform: scale(0.95) translateY(2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.button-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.button-ripple:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Loading and State Animations */
+.loading-pulse {
+  animation: loading-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.02);
+  }
+}
+
+.success-checkmark {
+  animation: success-checkmark 0.6s ease-in-out;
+}
+
+@keyframes success-checkmark {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(45deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(45deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(45deg);
+  }
+}
+
+/* Hover State Enhancements */
+.hover-scale {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-rotate {
+  transition: transform 0.3s ease;
+}
+
+.hover-rotate:hover {
+  transform: rotate(3deg) scale(1.02);
+}
+
+.hover-brightness {
+  transition: filter 0.2s ease;
+}
+
+.hover-brightness:hover {
+  filter: brightness(1.1) saturate(1.1);
+}
+
+/* Card Flip Animation */
+.card-flip {
+  perspective: 1000px;
+}
+
+.card-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card-flip:hover .card-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.card-flip-front, .card-flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: inherit;
+}
+
+.card-flip-back {
+  transform: rotateY(180deg);
+}
+
+/* Particle and Advanced Effects */
+.sparkle-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.sparkle-effect::before {
+  content: '✨';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  font-size: 12px;
+  opacity: 0;
+  animation: sparkle 2s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.sparkle-effect::after {
+  content: '⭐';
+  position: absolute;
+  top: 70%;
+  right: 20%;
+  font-size: 10px;
+  opacity: 0;
+  animation: sparkle 2s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+.typewriter-effect {
+  overflow: hidden;
+  border-right: 2px solid var(--retro-cyan);
+  white-space: nowrap;
+  animation: typewriter 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--retro-cyan); }
+}
+
+/* Enhanced Loading Screen Animations */
+.loading-screen-bg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .loading-screen-bg {
+    background-size: cover;
+    background-position: center top;
+  }
+}
+
+.logo-float {
+  animation: logo-float 3s ease-in-out infinite;
+}
+
+@keyframes logo-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.loading-dots {
+  animation: loading-dots 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-dots {
+  0%, 20% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  80%, 100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.progress-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Instagram Button Styling */
+.instagram-button {
+  color: white !important;
+}
+
+.instagram-button:hover {
+  color: white !important;
+}
+
+.instagram-button:visited {
+  color: white !important;
+}
+
+.instagram-button:active {
+  color: white !important;
+}
+
+/* Morphing Shapes */
+.morph-circle {
+  border-radius: 50%;
+  transition: border-radius 0.5s ease;
+}
+
+.morph-circle:hover {
+  border-radius: 20%;
+}
+
+.morph-square {
+  border-radius: 20%;
+  transition: border-radius 0.5s ease;
+}
+
+.morph-square:hover {
+  border-radius: 50%;
+}
+
+/* Parallax and Depth Effects */
+.parallax-slow {
+  transform: translateZ(0);
+  transition: transform 0.3s ease;
+}
+
+.parallax-slow:hover {
+  transform: translateZ(10px) translateY(-5px);
+}
+
+/* Glitch Effect */
+.glitch-effect {
+  position: relative;
+  animation: glitch 2s infinite;
+}
+
+.glitch-effect::before,
+.glitch-effect::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-effect::before {
+  animation: glitch-1 0.5s infinite;
+  color: var(--retro-cyan);
+  z-index: -1;
+}
+
+.glitch-effect::after {
+  animation: glitch-2 0.5s infinite;
+  color: var(--retro-pink);
+  z-index: -2;
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(-1px, -1px); }
+  60% { transform: translate(1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(1px, -1px); }
+  40% { transform: translate(1px, 1px); }
+  60% { transform: translate(-1px, -1px); }
+  80% { transform: translate(-1px, 1px); }
+}
+
+/* Neon Glow Animation */
+.neon-glow {
+  text-shadow:
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px var(--retro-cyan),
+    0 0 35px var(--retro-cyan),
+    0 0 40px var(--retro-cyan);
+  animation: neon-flicker 1.5s infinite alternate;
+}
+
+@keyframes neon-flicker {
+  0%, 100% {
+    text-shadow:
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor,
+      0 0 20px var(--retro-cyan),
+      0 0 35px var(--retro-cyan),
+      0 0 40px var(--retro-cyan);
+  }
+  50% {
+    text-shadow:
+      0 0 2px currentColor,
+      0 0 5px currentColor,
+      0 0 8px currentColor,
+      0 0 12px var(--retro-cyan),
+      0 0 18px var(--retro-cyan),
+      0 0 25px var(--retro-cyan);
+  }
+}
