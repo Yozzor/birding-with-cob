@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile } from 'fs/promises';
-import { join } from 'path';
+import { put } from '@vercel/blob';
 import { v4 as uuidv4 } from 'uuid';
 
 export async function POST(request: NextRequest) {
@@ -22,24 +21,20 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'File size must be less than 5MB' }, { status: 400 });
     }
 
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-
     // Generate unique filename
     const fileExtension = file.name.split('.').pop() || 'jpg';
-    const fileName = `${uuidv4()}.${fileExtension}`;
-    const filePath = join(process.cwd(), 'public', 'uploads', fileName);
+    const fileName = `bird-photos/${uuidv4()}.${fileExtension}`;
 
-    // Save file
-    await writeFile(filePath, buffer);
+    // Upload to Vercel Blob Storage
+    const blob = await put(fileName, file, {
+      access: 'public',
+      contentType: file.type,
+    });
 
-    // Return the public URL
-    const publicUrl = `/uploads/${fileName}`;
-
-    return NextResponse.json({ 
-      success: true, 
-      url: publicUrl,
-      filename: fileName 
+    return NextResponse.json({
+      success: true,
+      url: blob.url,
+      filename: fileName
     });
 
   } catch (error) {
