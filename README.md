@@ -2,6 +2,8 @@
 
 An interactive bird spotting application with a world map, species database, and photo sharing capabilities.
 
+<!-- Blob storage configured -->
+
 ![Birding with Cob](public/uploads/birdingwithcoblogo.png)
 
 ## ✨ Features
